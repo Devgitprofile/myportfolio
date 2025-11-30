@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DGM Project Management Services</title>
+    <style>
+        :root {
+            --primary-blue: #003d7a;
+            --accent-blue: #1e7eb8;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-gray: #555555;
+            --border-color: #e0e0e0;
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+        }
+
+        .logo img {
+            height: 100px;
+            width: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--primary-blue);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+
+        .section-bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .section-bg-white {
+            background-color: var(--white);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .case-study h3 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #e3f2fd;
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-item {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .result-item strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-item small {
+            color: var(--text-gray);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .expertise-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .expertise-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .expertise-item::before {
+            content: "✓";
+            color: var(--accent-blue);
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-top: -2px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+            word-break: break-word;
+        }
+
+        .contact-item a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .expertise-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/92607242-be21-413d-943c-2066b74d47e2" alt="DGM Logo">
+                
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Project Management & Marketing Excellence</h1>
+                <p>Transforming operations through strategic project management and innovative marketing solutions. With 35+ years of industry experience, I deliver measurable results and sustainable growth.</p>
+                <a href="#contact" class="cta-btn">Get in Touch</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/694914e0-a92d-42b6-9fca-871bebd89fed" alt="Devidas Mapari">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-bg-white">
+        <h2>Core Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Project Management</h3>
+                <p>End-to-end project lifecycle management with focus on planning, execution, and delivery. Expertise in managing multiple concurrent projects while maintaining budget and timeline compliance for manufacturing and application plants.</p>
+            </div>
+            <div class="service-card">
+                <h3>Marketing Management</h3>
+                <p>Strategic marketing initiatives, market analysis, and customer engagement strategies. Proven track record in technical support for market alignment.</p>
+            </div>
+            <div class="service-card">
+                <h3>Operation Management</h3>
+                <p>Operational excellence through quality management systems (ISO 9001, 14001, 45001), process improvement, and efficiency enhancement across all functional teams.</p>
+            </div>
+            <div class="service-card">
+                <h3>HSEQ Management</h3>
+                <p>Comprehensive Health, Safety, Environment & Quality management systems. Implementation, compliance, audits, and continuous improvement for regulatory adherence.</p>
+            </div>
+            <div class="service-card">
+                <h3>Technical Management</h3>
+                <p>Expert technical guidance for product development, formulation optimization, cost reduction, and comprehensive technical support for powder coating application plants like installations support, plant audits, applicators program, trouble shooting, improve production efficiency.</p>
+            </div>
+            <div class="service-card">
+                <h3>Leadership & Team Development</h3>
+                <p>Training programs, skill enhancement, competency development, and cross-functional team leadership for organizational excellence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="section-bg-light">
+        <h2>Case Studies</h2>
+
+        <div class="case-study">
+            <div style="display: flex; justify-content: space-between; align-items: start;">
+                <div>
+                    <h3>Application Plant Process Setup & Technical Services</h3>
+                    <div class="case-study-meta">
+                        <div class="meta-item"><strong>Goal:</strong> Technical support for plant commissioning, establish and optimize production processes for a new powder coating application plant</div>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Actions Taken:</strong></p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-gray);">
+                <li>Technical support and guidance to installation & Commissioning team.</li>
+                <li>Technical documentation and training for operations team</li>
+                <li>Guided for enhancing productivity and efficiency</li>
+                <li>Approved applicators program introduced for quality standard compliance</li>
+            </ul>
+            <div class="results-grid">
+                <div class="result-item">
+                    <strong>Established</strong>
+                    <small>Optimum process parameters for consistent coatings</small>
+                </div>
+                <div class="result-item">
+                    <strong>Quality Control system</strong>
+                    <small>Fully Implemented</small>
+                </div>
+                <div class="result-item">
+                    <strong>All</strong>
+                    <small>Stake holders trained</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h3>Quality & Operations Excellence in Powder Coating Manufacturing</h3>
+            <div class="case-study-meta">
+                <div class="meta-item"><strong>Scope:</strong> Establish and implement comprehensive quality management system         
+              and operational procedures across manufacturing facility.</div>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Actions Taken:</strong></p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-gray);">
+                <li>Production and Q.C process mapping</li>
+                <li>New procedures established and implemented</li>
+                <li>Trained stakeholders at all levels</li>
+                <li>Operational tools introduced for RCA</li>
+                <li>Customer site technical training</li>
+            </ul>
+            <div class="results-grid">
+                <div class="result-item">
+                    <strong>Improved consistency</strong>
+                    <small>Product quality and lower rejection rate</small>
+                </div>
+                <div class="result-item">
+                    <strong>30%</strong>
+                    <small>Reduction in Customers complaints</small>
+                </div>
+                <div class="result-item">
+                    <strong>Strengthened</strong>
+                    <small>Cross department communication</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h3>Cost Optimization Initiative</h3>
+            <div class="case-study-meta">
+                <div class="meta-item"><strong>Scope:</strong> Reduce operational costs maintaining product performance</div>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Actions Taken:</strong></p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-gray);">
+                <li>Raw materials analysis</li>
+                <li>Batch yield and scrap rate optimized</li>
+                <li>Products redesign with efficient raw materials</li>
+                <li>Optimized application & curing profiles</li>
+                <li>Focus on efficiency</li>
+            </ul>
+            <div class="results-grid">
+                <div class="result-item">
+                    <strong> 3-20%</strong>
+                    <small>Cost reduction across key products</small>
+                </div>
+                <div class="result-item">
+                    <strong>Significantly Increased</strong>
+                    <small>Productivity</small>
+                </div>
+                <div class="result-item">
+                    <strong>Improved</strong>
+                    <small>Inventory control</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <h3>Approved Applicators program for MEIA Market</h3>
+            <div class="case-study-meta">
+                <div class="meta-item"><strong>Objective:</strong>To raise powder coating quality standard in MEIA region and align with international standards.</div>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Actions Taken:</strong></p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-gray);">
+                <li>Roll out Application Guidelines, Quality specifications, In process quality  
+                    sampling technique and Inspection, quality approval, documentation.</li>
+               <li>Provided Powder school training for all stakeholders at the applicators end</li>
+               <li>Supported through inspection and testing process for quality verification</li>
+               <li>Plant audits and feedback for continuous improvements</li>
+            </ul>
+
+
+        <p style="margin-top: 1rem;"><strong>Results:</strong></p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-gray);"> 
+           <li>Elevated quality standard in the MEIA markets and compliance to international standards</li> 
+           <li>Structured approach for quality approvals and application certification</li>
+           <li>Significant improvements in quality consistency reduction in complaints and lower waste generation</li>
+           <li>Brand positioning and growth in business</li>
+           </ul>
+            <div class="results-grid">
+              </div>        
+        </div>
+
+        <div class="case-study">
+            <h3>HSEQ Management System Implementation</h3>
+            <div class="case-study-meta">
+                <div class="meta-item"><strong>Objective:</strong>Establish and implement HSEQ management system across all functions at company level and its branches as per corporate guidelines.</div>
+            </div>
+            <p style="margin-top: 1rem;"><strong>Results Achieved:</strong></p>
+            <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-gray);">
+                <li>Gap analysis done, roles and responsibilities defined</li>
+                <li>Training Matrix established, Training conducted for all stakeholders</li>
+                <li>Established HSEQ procedures aligned with corporate requirements and international standard for HSEQ</li>
+                <li>Internal audits </li>
+            </ul>
+            <div class="results-grid">
+                <div class="result-item">
+                    <strong>1,000+ consecutive days</strong>
+                    <small>With zero incidents</small>
+                </div>
+                <div class="result-item">
+                    <strong>Green Rating</strong>
+                    <small>Achieved from Corporate for 3 consecutive audits spread over 9 years</small>
+                </div>
+                <div class="result-item">
+                    <strong>Trained</strong>
+                    <small>Staff for HSEQ standard at all levels</small>
+                </div>
+                <div class="result-item">
+                    <strong>Achieved</strong>
+                    <small>Legal compliance and certification</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-bg-white">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Devidas Govind Mapari</h3>
+                <p>Expertise in Project Management and Powder Coatings Specialist with 35+ years of experience leading complex, multi-functional operations across the MEIA markets.</p>
+                <p>I specialize in project life cycle management, cross-functional team leadership, data-driven decision making, and strategic operational excellence. My expertise spans quality control, product formulation, process optimization, and HSEQ systems implementation.</p>
+                <p>I have successfully led major projects through planning, execution, and delivery, consistently achieving organizational objectives while enhancing product performance and reducing operational costs.</p>
+                <h3 style="margin-top: 2rem;">Core Competencies</h3>
+                <div class="expertise-list">
+                    <div class="expertise-item">End-to-end project life cycle management</div>
+                    <div class="expertise-item">Cross-functional team leadership</div>
+                    <div class="expertise-item">Data-driven decision making</div>
+                    <div class="expertise-item">Budget & cost control</div>
+                    <div class="expertise-item">Process improvement & optimization</div>
+                    <div class="expertise-item">ISO management systems</div>
+                    <div class="expertise-item">Technical consulting</div>
+                    <div class="expertise-item">Strategic planning & execution</div>
+                </div>
+            </div>
+            <div>
+                <div style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%); padding: 2rem; border-radius: 8px; color: var(--white);">
+                    <h3 style="color: var(--white); margin-bottom: 1.5rem;">Professional Highlights</h3>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Experience</strong>
+                        <p>35+ Years</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Education</strong>
+                        <p>BSc Chemistry, MBA</p>
+                        <p>IOSH / NEBOSH / ADOSH Certified</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Certifications</strong>
+                        <p>ISO 9001, 14001, 45001</p>
+                        <p>Diploma - HSEQ Management</p>
+                        <p>Diploma - Operations Academy</p>
+                        <p>Diploma - Project Management</p>
+                        <p>Diploma - R&D Academy</p>
+                        <p>Diploma - Sales & Customer service Academy</p>
+                        <p>Diploma - Crisis Management</p>
+                        <p>Certification for Strategy to implementation</p>
+                    </div>
+                    <div>
+                        <strong>Key Achievements</strong>
+                        <p>9-Year Green Rating</p>
+                        <p>1,000+ Days Zero Incidents</p>
+                        <p>50% QC Response Improvement</p>
+                        <p>20% Cost Reduction Programs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Let's Work Together</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem;">Ready to optimize your operations and drive strategic growth?</p>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h4>📧 Email</h4>
+                <p><a href="mailto:dgm25.promgt@gmail.com">dgm25.promgt@gmail.com</a></p>
+            </div>
+            <div class="contact-item">
+                <h4>📱 Phone</h4>
+                <p><a href="tel:+971504587063">+971 50 458 7063</a></p>
+            </div>
+            <div class="contact-item">
+                <h4>💼 LinkedIn</h4>
+                <p>Available for consultations and project engagements</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DGM Project Management Services. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Specialized in Project Management, Marketing Management, and Operational Excellence</p>
+    </footer>
+</body>
+</html>
